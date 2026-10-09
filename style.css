@@ -1519,3 +1519,171 @@ footer small {
   }
 
 }
+
+
+/* =====================================
+   ANIMASI ROMANTIS VINA & ARDHI
+===================================== */
+
+/* 1. OPENING ROMANTIS */
+#opening {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#opening h1,
+#opening h2,
+#opening p,
+#opening .opening-content {
+  animation: openingFade 1.8s ease both;
+}
+
+#opening h1 {
+  animation-delay: 0.3s;
+}
+
+#opening p {
+  animation-delay: 0.6s;
+}
+
+#openInvitation {
+  animation: buttonReveal 1.5s ease 0.9s both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#openInvitation:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px #c8a96a55;
+}
+
+@keyframes openingFade {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes buttonReveal {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Transisi ketika undangan dibuka */
+#opening {
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#opening.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 2. KELOPAK BUNGA BERJATUHAN */
+.petals {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.petal {
+  position: absolute;
+  top: -30px;
+  color: #a94e60;
+  opacity: 0;
+  animation: petalFall 10s linear forwards;
+  text-shadow: 0 1px 5px #c8a96a55;
+  will-change: transform;
+}
+
+@keyframes petalFall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -5vh, 0) rotate(0deg);
+  }
+  10% {
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(35px, 50vh, 0) rotate(180deg);
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-25px, 110vh, 0) rotate(360deg);
+  }
+}
+
+/* 3. ORNAMEN JAWA EMAS BERGERAK */
+.jawa-ornament {
+  position: absolute;
+  z-index: 2;
+  width: clamp(75px, 18vw, 145px);
+  height: auto;
+  color: #c8a96a;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: ornamentFloat 6s ease-in-out infinite;
+}
+
+.jawa-ornament.top-left {
+  top: 15px;
+  left: 10px;
+}
+
+.jawa-ornament.top-right {
+  top: 15px;
+  right: 10px;
+  animation-delay: -3s;
+}
+
+.jawa-ornament.bottom-left {
+  bottom: 15px;
+  left: 10px;
+  animation-delay: -2s;
+}
+
+.jawa-ornament.bottom-right {
+  bottom: 15px;
+  right: 10px;
+  animation-delay: -4s;
+}
+
+@keyframes ornamentFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+    opacity: 0.9;
+  }
+}
+
+/* Mengurangi gerakan untuk pengguna yang memilih
+   pengaturan minim gerakan di perangkatnya */
+@media (prefers-reduced-motion: reduce) {
+  .petal,
+  .jawa-ornament,
+  #opening h1,
+  #opening h2,
+  #opening p,
+  #opening .opening-content,
+  #openInvitation {
+    animation: none !important;
+  }
+}
